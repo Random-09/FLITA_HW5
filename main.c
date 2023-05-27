@@ -1,9 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <time.h>
-
-#define BILLION 1000000000.0
 
 typedef struct Graph {
     int **matrix;
@@ -89,13 +86,7 @@ int main(int argc, char **argv) {
     Graph_t *graph = initGraph(vertices);
     strToGraph(graph, data);
     free(data);
-    struct timespec start, end;
-    clock_gettime(CLOCK_REALTIME, &start);
     printVerticesByDegree(graph, degree);
-    clock_gettime(CLOCK_REALTIME, &end);
-    double time_spent = (double) (end.tv_sec - start.tv_sec) +
-                             (end.tv_nsec - start.tv_nsec) / BILLION;
-    printf("\nTime taken to sort: %f seconds\n", time_spent);
     freeGraph(graph);
     return EXIT_SUCCESS;
 }
