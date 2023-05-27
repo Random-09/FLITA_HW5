@@ -82,6 +82,7 @@ int main(int argc, char** argv) {
         puts("Error opening file");
         exit(EXIT_FAILURE);
     }
+
     char* data = getData(filePtr);
     fclose(filePtr);
 
@@ -90,6 +91,7 @@ int main(int argc, char** argv) {
 
     strToGraph(graph, data);
     free(data);
+
     printVerticesByDegree(graph, degree);
     freeGraph(graph);
     return EXIT_SUCCESS;
