@@ -73,17 +73,21 @@ int main(int argc, char** argv) {
         puts("Wrong number of arguments!");
         exit(EXIT_FAILURE);
     }
+
     const char* filePath = argv[1];
     int degree = atoi(argv[2]);
     FILE* filePtr = fopen(filePath, "r");
+
     if (filePtr == NULL) {
         puts("Error opening file");
         exit(EXIT_FAILURE);
     }
     char* data = getData(filePtr);
     fclose(filePtr);
+
     int vertices = getVerticesNum(data);
     Graph_t* graph = initGraph(vertices);
+
     strToGraph(graph, data);
     free(data);
     printVerticesByDegree(graph, degree);
