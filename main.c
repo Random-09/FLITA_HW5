@@ -7,7 +7,7 @@ typedef struct Graph {
     int verticesNum;
 } Graph_t;
 
-char*  getData(FILE* filePtr) {
+char* getData(FILE* filePtr) {
     fseek(filePtr, 0, SEEK_END);
     int fileLen = ftell(filePtr) - 1;
     fseek(filePtr, 0, SEEK_SET);
@@ -73,7 +73,7 @@ int main(int argc, char** argv) {
         puts("Wrong number of arguments!");
         exit(EXIT_FAILURE);
     }
-    char* filePath = argv[1];
+    const char* filePath = argv[1];
     int degree = atoi(argv[2]);
     FILE* filePtr = fopen(filePath, "r");
     if (filePtr == NULL) {
